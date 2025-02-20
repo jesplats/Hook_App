@@ -2,17 +2,23 @@ import { useEffect } from 'react'
 export const Message = () => {
  
  useEffect(() => {
-   console.log('componente montado')
+   
+   const onMouseMove = ({x,y}) => {
+    const coors = {x, y}
+    console.log(coors)
+   }
+   
+    window.addEventListener('mousemove', onMouseMove)
  
    return () => {
-     console.log('componente desmontado')
+    window.removeEventListener('mousemove', onMouseMove)
    }
  }, [])
  
  
     return (
    <>
-   
+   <h3> existe</h3>
    </>
   )
 }
