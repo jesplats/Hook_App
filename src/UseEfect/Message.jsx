@@ -17,7 +17,7 @@ const  [coors, setcoors] = useState({x:0, y:0})
     window.addEventListener('mousemove', onMouseMove)
  
    return () => {
-    window.removeEventListener('mousemove', onMouseMove)
+    //window.removeEventListener('mousemove', onMouseMove)
    }
  }, [])
  
