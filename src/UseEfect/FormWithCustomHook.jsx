@@ -1,26 +1,25 @@
-import {  useState } from "react"
-import { Message } from "./Message"
- export const FormWithCustomHook = () => {
+//import {  useState } from "react"
+//import { Message } from "./Message"
+import { useForm } from "../Hook/useForm" 
+export const FormWithCustomHook = () => {
  
-const [formState, setformState] = useState({
 
-    username: 'jesus plata',
-    email: 'jesus@gmail.com',
-    pasword: ''
-})
+   let {onChange,formState} = useForm(
+    {
+      username: '',
+      email: '',
+      pasword: ''
+    }
+   );
 
-const onChange=({target})=>{
+   let {username,email,pasword} = formState;
 
-    const {value}=target
-setformState({
-    ...formState,
-[target.name]: value
-})
-}
+ // {
+    //username: "jesus plata",
+    //email: "jesus@gmail.com",
+    //pasword: "",
+  //}
 
-
-
-const {username, email,pasword} = formState
 
 //useEffect(() => {
   //  console.log('cambiado')
@@ -55,24 +54,22 @@ const {username, email,pasword} = formState
     value={email}
     onChange={onChange}
     />
-
+<hr/>
 <input
     type="password"
     className="form-control mt-2"
-    placeholder="pasword"
-    name="email"
+    placeholder="Contraseña"
+    name="pasword"
     value={pasword}
     onChange={onChange}
     />
 
-    {
-        (username === 'jesus plata') && <Message />
-    }
+  
 
     </>
   )
 
-
+  //{   (username === 'jesus plata') && <Message />}
 }
 
 
