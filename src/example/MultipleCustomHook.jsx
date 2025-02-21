@@ -1,28 +1,38 @@
-import { useFectch } from "../Hook/useFectch"
+import { useFectch } from "../Hook/useFectch";
 import { UseCounter } from "../Hook/useCounter";
+import { LoadingMessage } from "./LoadingMessage";
+import { PokemonCard } from "./PokemonCard";
+
 export const MultipleCustomHook = () => {
   
-  //fetch('https://pokeapi.co/api/v2/pokemon/ditto')
+  let { counter, increment, decrementar } = UseCounter(1);
+  let { data, isloading } = useFectch(`https://pokeapi.co/api/v2/pokemon/${counter}`);
   
-  let {counter,increment,decrementar}=UseCounter(1);
-  let {data, isloading} = useFectch(`https://pokeapi.co/api/v2/pokemon/${counter}`);
-
-  
-    return (
-    
+  return (
     <>
-    <h1> Imformacion del pokemon</h1>
-    <hr/>
+      <h1>Información del Pokémon</h1>
+      <hr />
+      
+      {isloading ? (
+        <LoadingMessage />
+      ) : (
+        <PokemonCard id={counter}
+         name={data.name}
+         Sprite={[
+              data.sprites.front_default,
+              data.sprites.front_shiny,
+              data.sprites.back_default,
+                data.sprites.back_shiny
+         ]}
+         />
+      )}
 
-{isloading && <p>Cargando...</p>}
-<h1>{data?.name}</h1>
-    <hr/>
-    <button className="btn btn-primary" onClick={increment}>incrementar</button>
-<button className="btn btn-primary" onClick={ decrementar }>decrementar</button>
-
-    </>
+      {/* Renderizado seguro de 'data?.name' solo cuando los datos estén disponibles */}
     
-  )
- // <pre>{JSON.stringify(data,null,2)}</pre>
-}
 
+      <hr />
+      <button className="btn btn-primary" onClick={increment}>Incrementar</button>
+      <button className="btn btn-primary" onClick={decrementar}>Decrementar</button>
+    </>
+  );
+};
