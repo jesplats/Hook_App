@@ -2,9 +2,9 @@
 //import { Message } from "./Message"
 import { useForm } from "../Hook/useForm" 
 export const FormWithCustomHook = () => {
- 
-
-   let {onChange,formState} = useForm(
+  
+       
+   let {onChange,formState,onResetForm,email,username,pasword} = useForm(
     {
       username: '',
       email: '',
@@ -12,7 +12,9 @@ export const FormWithCustomHook = () => {
     }
    );
 
-   let {username,email,pasword} = formState;
+ 
+
+   //let {username,email,pasword} = formState;
 
  // {
     //username: "jesus plata",
@@ -30,7 +32,7 @@ export const FormWithCustomHook = () => {
 //},[email])
   
     return (
-    <>
+    <> 
 
     <h1>Formulario con customhook</h1>
     <hr />
@@ -64,7 +66,9 @@ export const FormWithCustomHook = () => {
     onChange={onChange}
     />
 
-  
+  <hr/>
+
+<button className="btn btn-primary" onClick={onResetForm}>Borrar</button>
 
     </>
   )

@@ -11,10 +11,16 @@ export const useForm = (initialForm = {}) => {
     });
   };
 
+  let onResetForm =()=>{
+    setformState(initialForm)
+  }
+
   //const { username, email, pasword } = formState;
 
   return {
+    ...formState,
     onChange,
     formState,
+    onResetForm
   };
 };
