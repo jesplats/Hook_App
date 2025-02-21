@@ -14,9 +14,19 @@ export const useFectch = (url) => {
 
     useEffect(()=>{
         getFetch()
-    },[])
+    },[url])
+
+    let setLoadingState=()=>{
+        setstate({
+            data:null,
+            loading:true,
+            hasError:null,
+            error:null
+        })
+    }
 
 let getFetch = async()=>{
+    setLoadingState();
    let respo= await fetch(url)
 await new Promise((resolve)=>setTimeout(resolve,1500))
 
