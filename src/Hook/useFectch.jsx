@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 
 
+let localcache={}
+
+
 export const useFectch = (url) => {
   
     //let url = 'https://pokeapi.co/api/v2/pokemon/ditto';
@@ -16,6 +19,8 @@ export const useFectch = (url) => {
         getFetch()
     },[url])
 
+
+
     let setLoadingState=()=>{
         setstate({
             data:null,
@@ -26,7 +31,18 @@ export const useFectch = (url) => {
     }
 
 let getFetch = async()=>{
+if(localcache[url]){
+    setstate({
+        data:localcache[url],
+        isloading:false,
+        hasError:false,
+        error:null
+    })
+    return;
+}
+
     setLoadingState();
+
    let respo= await fetch(url)
 await new Promise((resolve)=>setTimeout(resolve,1500))
 
@@ -38,9 +54,17 @@ await new Promise((resolve)=>setTimeout(resolve,1500))
         error:respo.statusText,
         message:respo.status,
     })
+
+
+    // mensaje del cache
+   
+
     return;
 }
    let data= await respo.json()
+   
+   localcache[url]=data
+   console.log(localcache)
    setstate({
     data,
     loading:false,
