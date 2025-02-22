@@ -61,10 +61,12 @@ await new Promise((resolve)=>setTimeout(resolve,1500))
 
     return;
 }
+
    let data= await respo.json()
-   
+
+   // el cache solo se ejecuta siempre y cuando se ejecute la peticion correctamente
    localcache[url]=data
-   console.log(localcache)
+   console.log("esta usando cache ",localcache)
    setstate({
     data,
     loading:false,
