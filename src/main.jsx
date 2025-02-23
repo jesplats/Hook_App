@@ -7,9 +7,12 @@ import './index.css'
 //import { Counter } from './useState/Counter'
 //import {FormWithCustomHook} from './UseEfect/FormWithCustomHook'
 //import { MultipleCustomHook } from './example/MultipleCustomHook'
-import { FocusScreen } from './useRef/FocusScreen'
+//import { FocusScreen } from './useRef/FocusScreen'
+//mport { Layout } from './useLoyaurEfecct/Layout'
+import {CallbackHook} from './memos/CallbackHook'
+//import { Memorize } from './memos/Memorize'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <FocusScreen />
+    <CallbackHook />
   </StrictMode>,
 )

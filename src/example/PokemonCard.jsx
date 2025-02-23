@@ -1,7 +1,24 @@
+import  { useState } from "react";
+import  { useLayoutEffect, useRef } from "react";
 export const PokemonCard = ({ id, Sprite,name = [] }) => {
-    return (
-      <section style={{ height: 200 }}>
-        <h2>{id} - {name} </h2>
+    let h2ref = useRef();
+    
+    let  [obtenercor, setobtenercor] = useState({height:0,width:0});
+
+useLayoutEffect(()=>{
+  let {height,width}=h2ref.current.getBoundingClientRect(); 
+  setobtenercor({height,width});
+  console.log(height,width);
+
+
+},[name])
+
+  
+  
+   
+  return (
+      <section style={{ height: 200 ,display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
+        <h2 ref={h2ref}  >{id} - {name} </h2>
       
       <div>
         {
@@ -10,7 +27,12 @@ export const PokemonCard = ({ id, Sprite,name = [] }) => {
             ))
             }
       </div>
+     <pre>{JSON.stringify(obtenercor)}</pre>
+      
       </section>
+      
+
+     
     );
   };
   
