@@ -9,10 +9,14 @@ import './index.css'
 //import { MultipleCustomHook } from './example/MultipleCustomHook'
 //import { FocusScreen } from './useRef/FocusScreen'
 //mport { Layout } from './useLoyaurEfecct/Layout'
-import {CallbackHook} from './memos/CallbackHook'
+//import {CallbackHook} from './memos/CallbackHook'
+
+import './useReducer/intro-reducer'
+import { Padre } from './07-tarea-memo/Padre'
 //import { Memorize } from './memos/Memorize'
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <CallbackHook />
-  </StrictMode>,
-)
+
+//createRoot(document.getElementById('root')).render(
+  //<StrictMode>
+    //<Padre />
+//  </StrictMode>,
+//)
