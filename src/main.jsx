@@ -10,13 +10,13 @@ import './index.css'
 //import { FocusScreen } from './useRef/FocusScreen'
 //mport { Layout } from './useLoyaurEfecct/Layout'
 //import {CallbackHook} from './memos/CallbackHook'
-
-import './useReducer/intro-reducer'
-import { Padre } from './07-tarea-memo/Padre'
+import { TodoApp } from './useReducer/todoReducer'
+//import './useReducer/intro-reducer'
+//import { Padre } from './07-tarea-memo/Padre'
 //import { Memorize } from './memos/Memorize'
 
-//createRoot(document.getElementById('root')).render(
-  //<StrictMode>
-    //<Padre />
-//  </StrictMode>,
-//)
+createRoot(document.getElementById('root')).render(
+//  <StrictMode>
+    <TodoApp />
+ //</StrictMode>,
+)
