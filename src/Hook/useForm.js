@@ -11,9 +11,9 @@ export const useForm = (initialForm = {}) => {
     });
   };
 
-  let onResetForm =()=>{
-    setformState(initialForm)
-  }
+  let onResetForm = () => {
+    setformState(initialForm);
+  };
 
   //const { username, email, pasword } = formState;
 
@@ -21,6 +21,6 @@ export const useForm = (initialForm = {}) => {
     ...formState,
     onChange,
     formState,
-    onResetForm
+    onResetForm,
   };
 };
