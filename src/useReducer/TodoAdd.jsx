@@ -16,7 +16,7 @@ export const TodoAdd = ({onNewTodo}) => {
        description:description,
        done:false
     }
-    onNewTodo && onNewTodo(newTodo);
+ onNewTodo(newTodo);
   }
 
   return (

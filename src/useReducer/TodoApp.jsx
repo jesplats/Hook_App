@@ -1,5 +1,5 @@
 import { useEffect, useReducer } from "react"
-import { todoReducer } from "./todoReducer"
+import { todoReducer } from "./todoReducer.js"
 import { TodoList } from "./todoList.jsx"
 import { TodoAdd } from "./TodoAdd.jsx"
 let initialState=[
@@ -35,6 +35,27 @@ let handleNewTodo=(todos)=>{
 }
 dispatch(action)}
 
+
+let handleDeleteTodo=(id)=>{
+ 
+ console.log({id})
+  dispatch({
+   type:"[TODO] Remove todo",
+   payload:id
+ })
+
+} 
+
+let handleToggTodo=(id)=>{
+  console.log({id})
+  console.log({id})
+   dispatch({
+    type:"[TODO] Toggle todo",
+    payload:id
+  })
+
+}
+
   return (
   <>
  <h1> todo app</h1>
@@ -42,7 +63,10 @@ dispatch(action)}
 
   <div className="row">
     <div className="col-7">
-  <TodoList todos={todos}/>   
+  <TodoList todos={todos} 
+  onDeleteTodo={handleDeleteTodo}
+  onToggleTodo={handleToggTodo}
+  />   
     </div>
     
     <div className="col-5"> 
