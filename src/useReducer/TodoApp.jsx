@@ -1,64 +1,17 @@
-import { useEffect, useReducer } from "react"
-import { todoReducer } from "./todoReducer.js"
+//import { useEffect, useReducer } from "react"
+//import { todoReducer } from "./todoReducer.js"
 import { TodoList } from "./todoList.jsx"
 import { TodoAdd } from "./TodoAdd.jsx"
-let initialState=[
-  
-  //{
-    
-  
-  //id: new Date().getTime(),
-    //description:"Recolectar thanos",
-   // done:false ,
- //},
-
-
-]
- let init=()=>{
-  return JSON.parse(localStorage.getItem("todos")) || []
- }
+import { useTodos } from "../Hook/useTodos.jsx"
 
 export const TodoApp = () => {
-   
-  const [todos, dispatch] = useReducer(todoReducer, initialState,init)
+
+  let {todos,handleDeleteTodo,handleNewTodo,handleToggTodo,todosCount,pendingCount}=useTodos()
   
-  useEffect(() => {
-console.log(todos)
-localStorage.setItem("todos",JSON.stringify(todos))
-  },[todos])
-
-
-let handleNewTodo=(todos)=>{
-  let action={ 
-  type:"Add todo",
-   payload:todos
-}
-dispatch(action)}
-
-
-let handleDeleteTodo=(id)=>{
- 
- console.log({id})
-  dispatch({
-   type:"[TODO] Remove todo",
-   payload:id
- })
-
-} 
-
-let handleToggTodo=(id)=>{
-  console.log({id})
-  console.log({id})
-   dispatch({
-    type:"[TODO] Toggle todo",
-    payload:id
-  })
-
-}
 
   return (
   <>
- <h1> todo app</h1>
+ <h1> todoapp:{todosCount} <small>Pendiente {pendingCount}</small></h1>
  <hr/>
 
   <div className="row">
