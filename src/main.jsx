@@ -1,3 +1,5 @@
+
+import { BrowserRouter } from 'react-router-dom'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 //import './index.css'
@@ -10,13 +12,18 @@ import { createRoot } from 'react-dom/client'
 //import { FocusScreen } from './useRef/FocusScreen'
 //mport { Layout } from './useLoyaurEfecct/Layout'
 //import {CallbackHook} from './memos/CallbackHook'
-import {TodoApp} from './useReducer/TodoApp'
+//import {TodoApp} from './useReducer/TodoApp'
 //import './useReducer/intro-reducer'
 //import { Padre } from './07-tarea-memo/Padre'
 //import { Memorize } from './memos/Memorize'
+import { MainApp } from './useContext/MainApp'
 
 createRoot(document.getElementById('root')).render(
+ 
+ <BrowserRouter>
  <StrictMode>
-    <TodoApp />
+    <MainApp />
  </StrictMode>,
+ </BrowserRouter>
+ 
 )
